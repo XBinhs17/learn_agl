@@ -9,12 +9,14 @@ import { HeaderLayoutComponent } from "./shared/header-layout/header-layout.comp
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  // text
-  title = 'learn-alg-bsic';
+  nameBtn = 'click me!';
+  clickMessage = '';
 
-  //properties
-  isDisable = true;
+  handleClickMe(): void{
+    this.clickMessage = 'Button clicked!';
+  }
 
-  //Attributes
-  contentImage = "XB learn";
+  updateField(): void{
+    console.log('hello world');
+  }
 }

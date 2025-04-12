@@ -1,14 +1,12 @@
 <main class="main">
   <header-layout/>
 
-  <!-- use text -->
-  <div>{{ title }}</div>
+  <h1>Click is an event</h1>
+  <button (click) = "handleClickMe()">{{ nameBtn }}</button>
 
-  <!-- use properties -->
-  <button [disabled]="isDisable">Click me</button>
+  <div>Message: {{ clickMessage }}</div>
 
-  <!-- use attribute -->
-   <img src="https://res.cloudinary.com/dlteq4ism/image/upload/v1744352069/XB2_whiteb_ctaeq0.png" alt=" Logo {{ contentImage }}"/>
+  <input type="text" (keyup)="updateField()" placeholder="enter text">
 </main>
 
 <router-outlet />
