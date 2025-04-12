@@ -1,5 +1,14 @@
 <main class="main">
   <header-layout/>
+
+  <!-- use text -->
+  <div>{{ title }}</div>
+
+  <!-- use properties -->
+  <button [disabled]="isDisable">Click me</button>
+
+  <!-- use attribute -->
+   <img src="https://res.cloudinary.com/dlteq4ism/image/upload/v1744352069/XB2_whiteb_ctaeq0.png" alt=" Logo {{ contentImage }}"/>
 </main>
 
 <router-outlet />

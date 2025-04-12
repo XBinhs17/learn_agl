@@ -9,5 +9,12 @@ import { HeaderLayoutComponent } from "./shared/header-layout/header-layout.comp
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  // text
   title = 'learn-alg-bsic';
+
+  //properties
+  isDisable = true;
+
+  //Attributes
+  contentImage = "XB learn";
 }
