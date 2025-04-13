@@ -6,7 +6,9 @@
 
   <div>Message: {{ clickMessage }}</div>
 
-  <input type="text" (keyup)="updateField()" placeholder="enter text">
+  <input type="text" [(ngModel)]="bindingMessage" placeholder="enter text">
+
+  <div>Message: {{ bindingMessage }}</div>
 </main>
 
 <router-outlet />
