@@ -18,11 +18,11 @@
               <img src="https://res.cloudinary.com/dlteq4ism/image/upload/v1744352069/XB2_whitebg_ctaeq0.png"
                 alt="logo"  width="60px"/>
             </div>
-            <div class="col-2">XBLogo</div>
+            <div class="col-2">{{ 'xb logo' | upperCasePipe }}</div>
             <div class="col-3">
               <input value="1" placeholder="price"/>
             </div>
-            <div class="col-4">100.000 VNĐ</div>
+            <div class="col-4">{{ 400000 | currencyPipe }}</div>
             <div class="col-5"><button>X</button></div>
           </div>
         </div>
