@@ -4,11 +4,19 @@ import { HeaderLayoutComponent } from "./shared/header-layout/header-layout.comp
 import { FormsModule } from '@angular/forms';
 import { currencyPipe } from './shared/pipes/CurrencyPipe.pipe';
 import { upperCasePipe } from './shared/pipes/UpperCasePipe.pipe';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderLayoutComponent,  FormsModule, currencyPipe, upperCasePipe, NgFor ],
+  imports: [
+    RouterOutlet,
+    HeaderLayoutComponent,
+    FormsModule,
+    currencyPipe,
+    upperCasePipe,
+    NgFor,
+    NgIf
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -17,6 +25,9 @@ export class AppComponent {
   clickMessage = '';
 
   bindingMessage = '';
+
+  isActive = false;
+  isVisible = false;
 
   products = [
     {name: 'product 1', price: 450000, image: 'https://res.cloudinary.com/dlteq4ism/image/upload/v1744352069/XB2_whitebg_ctaeq0.png'},

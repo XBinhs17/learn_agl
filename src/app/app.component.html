@@ -1,7 +1,9 @@
 <main class="main">
   <header-layout />
   <div class="wrapper-cart">
-    <div class="title-cart">Shopping Cart</div>
+    <h1 >Shopping Cart</h1>
+
+    <div *ngIf="isVisible">Test directive structural</div>
 
     <div class="cart-content">
       <div class="group-cart">
