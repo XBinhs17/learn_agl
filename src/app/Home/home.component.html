@@ -15,7 +15,7 @@
       <div class="cart-body">
         <div class="cart-body-row" *ngFor="let product of products">
           <div class="col-1">
-            <img src="{{ product.image }}" alt="logo" width="60px" />
+            <a [routerLink] = "['/detail', product.id]"><img src="{{ product.image }}" alt="logo" width="60px" /></a>
           </div>
           <div class="col-2">{{ product.name | upperCasePipe }}</div>
           <div class="col-3">
