@@ -27,6 +27,13 @@ export class ProductItemComponent{
 
   @Output() dataEvent = new EventEmitter<number>();
 
+  get totalprice(): string{
+    const sum = this.products.reduce((total, item) => {
+      return total + item.price;
+    }, 0);
+    return `total Price ${sum}`;
+  }
+
   handleDelete = (id: number) =>{
     this.dataEvent.emit(id);
   }
