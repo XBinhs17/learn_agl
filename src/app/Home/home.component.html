@@ -1,0 +1,31 @@
+<div class="wrapper-cart">
+  <h1>Shopping Cart</h1>
+
+  <div *ngIf="isVisible">Test directive structural</div>
+
+  <div class="cart-content">
+    <div class="group-cart">
+      <div class="cart-header">
+        <div class="col-1">Hình ảnh</div>
+        <div class="col-2">Tên</div>
+        <div class="col-3">Số lượng</div>
+        <div class="col-4">Giá</div>
+        <div class="col-5"></div>
+      </div>
+      <div class="cart-body">
+        <div class="cart-body-row" *ngFor="let product of products">
+          <div class="col-1">
+            <img src="{{ product.image }}" alt="logo" width="60px" />
+          </div>
+          <div class="col-2">{{ product.name | upperCasePipe }}</div>
+          <div class="col-3">
+            <input value="1" placeholder="price" />
+          </div>
+          <div class="col-4">{{ product.price | currencyPipe }}</div>
+          <div class="col-5"><button>X</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
