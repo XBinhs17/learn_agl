@@ -10,12 +10,10 @@ import { ProductItems } from "../types/productItem";
   selector: 'app-product-item',
   standalone: true,
   imports: [
-    RouterOutlet,
     FormsModule,
     currencyPipe,
     upperCasePipe,
     NgFor,
-    NgIf,
     RouterLink
   ],
   templateUrl: './productItem.component.html',

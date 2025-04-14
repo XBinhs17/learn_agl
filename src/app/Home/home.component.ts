@@ -1,19 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { HeaderLayoutComponent } from "../shared/header-layout/header-layout.component";
-import { FormsModule } from '@angular/forms';
-import { currencyPipe } from '../shared/pipes/CurrencyPipe.pipe';
-import { upperCasePipe } from '../shared/pipes/UpperCasePipe.pipe';
-import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ProductItems } from '../shared/types/productItem';
 import { ProductItemComponent } from "../shared/product-item/productItem.component";
-import { log } from 'console';
 import { HttpClient } from '@angular/common/http';
+import { BlogService } from '../../services/BlogService';
 
 @Component({
   selector: 'app-home',
   imports: [
-    RouterOutlet,
     ProductItemComponent
 ],
   templateUrl: './home.component.html',
@@ -42,13 +35,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  constructor(private http: HttpClient){
+  constructor(private blogService: BlogService){
     console.log('Initalize component');
   }
 
   ngOnInit(): void {
-    this.http.get<any>('https://ninedev-api.vercel.app/blogs')
-    .subscribe(({data}) => {
+    this.blogService.getBlogs().subscribe(({data}) => {
       this.products = data.map((item:any) => {
         return{
           ...item,
