@@ -1,14 +1,36 @@
 <main class="main">
-  <header-layout/>
+  <header-layout />
+  <div class="wrapper-cart">
+    <div class="title-cart">Shopping Cart</div>
 
-  <h1>Click is an event</h1>
-  <button (click) = "handleClickMe()">{{ nameBtn }}</button>
+    <div class="cart-content">
+      <div class="group-cart">
+        <div class="cart-header">
+          <div class="col-1">Image</div>
+          <div class="col-2">Name</div>
+          <div class="col-3">Quantity</div>
+          <div class="col-4">Price</div>
+          <div class="col-5"></div>
+        </div>
+        <div class="cart-body">
+          <div class="cart-body-row">
+            <div class="col-1">
+              <img src="https://res.cloudinary.com/dlteq4ism/image/upload/v1744352069/XB2_whitebg_ctaeq0.png"
+                alt="logo"  width="60px"/>
+            </div>
+            <div class="col-2">XBLogo</div>
+            <div class="col-3">
+              <input value="1" placeholder="price"/>
+            </div>
+            <div class="col-4">100.000 VNĐ</div>
+            <div class="col-5"><button>X</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div>Message: {{ clickMessage }}</div>
+  </div>
 
-  <input type="text" [(ngModel)]="bindingMessage" placeholder="enter text">
-
-  <div>Message: {{ bindingMessage }}</div>
 </main>
 
 <router-outlet />
