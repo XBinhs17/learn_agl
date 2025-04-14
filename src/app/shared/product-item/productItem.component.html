@@ -16,7 +16,7 @@
         <input value="1" placeholder="quantity" />
       </div>
       <div class="col-4">{{ product.price | currencyPipe }}</div>
-      <div class="col-5"><button>X</button></div>
+      <div class="col-5"><button (click)="handleDelete(product.id)">X</button></div>
     </div>
   </div>
 </div>

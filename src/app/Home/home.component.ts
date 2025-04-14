@@ -7,6 +7,7 @@ import { upperCasePipe } from '../shared/pipes/UpperCasePipe.pipe';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ProductItems } from '../shared/types/productItem';
 import { ProductItemComponent } from "../shared/product-item/productItem.component";
+import { log } from 'console';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +33,13 @@ export class HomeComponent {
     {id: 3, name: 'product 3', price: 650000, image: 'https://res.cloudinary.com/dlteq4ism/image/upload/v1744352069/XB2_whitebg_ctaeq0.png'},
     {id: 4, name: 'product 4', price: 750000, image: 'https://res.cloudinary.com/dlteq4ism/image/upload/v1744352069/XB2_whitebg_ctaeq0.png'}
   ];
+
+  handleDelete = (id: number)=>{
+    const productIndex = this.products.findIndex(item => item.id == id);
+    if (productIndex !== -1) {
+      this.products.splice(productIndex, 1);
+    }
+  }
 
   handleClickMe(): void{
     this.clickMessage = 'Button clicked!';
