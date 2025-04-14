@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductItems } from '../shared/types/productItem';
 import { ProductItemComponent } from "../shared/product-item/productItem.component";
 import { HttpClient } from '@angular/common/http';
 import { BlogService } from '../../services/BlogService';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { BlogService } from '../../services/BlogService';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   nameBtn = 'click me!';
   clickMessage = '';
 
@@ -20,6 +21,9 @@ export class HomeComponent implements OnInit {
 
   isActive = false;
   isVisible = false;
+
+  getBlogApi: Subscription;
+
 
   products: ProductItems[] = [
     {id: 1, name: 'product 1', price: 450000, image: 'https://res.cloudinary.com/dlteq4ism/image/upload/v1744352069/XB2_whitebg_ctaeq0.png'},
@@ -37,10 +41,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private blogService: BlogService){
     console.log('Initalize component');
+    this.getBlogApi = new Subscription();
   }
 
   ngOnInit(): void {
-    this.blogService.getBlogs().subscribe(({data}) => {
+    this.getBlogApi = this.blogService.getBlogs().subscribe(({data}) => {
       this.products = data.map((item:any) => {
         return{
           ...item,
@@ -51,6 +56,13 @@ export class HomeComponent implements OnInit {
         }
       });
     });
+  }
+
+  ngOnDestroy(): void {
+      if(this.getBlogApi){
+        this.getBlogApi.unsubscribe();
+        console.log('getBlogApi unsub');
+      }
   }
 
   handleClickMe(): void{
