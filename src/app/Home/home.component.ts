@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HeaderLayoutComponent } from "../shared/header-layout/header-layout.component";
 import { FormsModule } from '@angular/forms';
@@ -8,6 +8,7 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ProductItems } from '../shared/types/productItem';
 import { ProductItemComponent } from "../shared/product-item/productItem.component";
 import { log } from 'console';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ import { log } from 'console';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   nameBtn = 'click me!';
   clickMessage = '';
 
@@ -39,6 +40,25 @@ export class HomeComponent {
     if (productIndex !== -1) {
       this.products.splice(productIndex, 1);
     }
+  }
+
+  constructor(private http: HttpClient){
+    console.log('Initalize component');
+  }
+
+  ngOnInit(): void {
+    this.http.get<any>('https://ninedev-api.vercel.app/blogs')
+    .subscribe(({data}) => {
+      this.products = data.map((item:any) => {
+        return{
+          ...item,
+          name: item.title,
+          price: item.body,
+          image: 'https://res.cloudinary.com/dlteq4ism/image/upload/v1744352069/XB2_whitebg_ctaeq0.png',
+
+        }
+      });
+    });
   }
 
   handleClickMe(): void{
